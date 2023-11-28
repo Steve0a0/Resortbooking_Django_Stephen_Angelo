@@ -1,0 +1,42 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock  %}</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/script.js' %}" defer></script>
+
+
+
+
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="{% url "home" %}" class = "logo">Logo</a>
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu'id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+        </label>
+        <nav class="navbar">
+            <a href="{% url "home" %}#mainm">Properties</a>
+            <a href="{% url "home" %}#about">About</a>
+            <a href="{% url "home" %}#contact">Contact</a>
+            <a href="tel:+1234567890" class="navbar-phone">+91-7448898989</a>
+
+        </nav>
+    </header>
+    <div class="homes">
+        {% block home %}
+        {% endblock %}
+    </div>
+</body>
+</html>

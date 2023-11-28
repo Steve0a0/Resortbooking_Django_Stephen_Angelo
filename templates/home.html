@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock  %}
+{% load static %}
+{% block home %}
+<section class="sectionn">
+    <div class= "homeimg"><h1>Endless Choices, One Destination</h1> <br><h4>Your Ideal Resort Vacation</h4>
+        <!-- <a href="">Read More</a> -->
+    </div>
+</section>
+<div id="container">
+    <div class="main">
+        <section class="mainm" id="mainm">
+            <div class="properties">
+             <h1>Properties</h1>
+         </div>
+            <div class="box-container">
+                {% for a in Hoteldetails %}
+                 <div class="box">
+                     <div class="box-img">
+                  <a href=""><img src={{a.main_hotel_image.url}} alt="Hotel Image"></a>       
+                     </div>
+                     <div class="box-info">
+                         <h2 class="hotel-name"><a href="">{{a.hotel_name}}</a></h2>
+                         <p class="hotel-area">{{a.hotel_area}}</p>
+                         <p class="beds-people">Beds: {{a.hotel_beds}} | Accommodates: {{a.hotel_accommodates}}</p>
+                         <div class="star-rating">
+                            <span class="gold-star">{{ a.generate_star_rating_html|safe }}</span>
+                           </div>
+                           <div class="pricee">   <h2>Price:</h2> <h2>{{a.hotel_price}}</h2></div>
+                        
+                         <div class="readmore">
+                             <a href="{% url "details" a.pk%}">View Details</a>
+                         </div>
+                     </div>
+                 </div>
+                 {% endfor %}
+                
+             </div> 
+         </section>
+    </div>
+</div>
+<section class="about" id="about">
+    <div class="mainabout">
+        
+    <div class="aboutt">
+        <h1 class="headabout">About</h1>
+    <img src="{% static "img\logo12-removebg-preview.png" %}" alt="" srcset=""></div>
+    <h1 class="aboutmehead">Elevating Travel Experiences, One Booking at a Time</h1>
+    <h1 class="aboutme">Welcome to [Your Hotel Booking Website], where your travel aspirations come to life. We're on a mission to make your hotel booking experience effortless and enjoyable. Our diverse selection, competitive prices, and user-friendly platform ensure that your stay is tailored to your desires. Trust our guest reviews and rely on our 24/7 customer support for a seamless journey. Your adventure begins with us.</h1>
+
+</div>
+</section>
+<section class="contactus" id="contact">
+    <h1 class="contact">Contact Us</h1>
+    <form class="cf" method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <div class="half left cf">
+            <input type="text" name="name" placeholder="Name">
+            <input type="email" name="email" placeholder="Email address">
+            <input type="number" name="phone" placeholder="Phone Number">
+            <input type="text" name="subject" placeholder="Subject">
+        </div>
+        <div class="half right cf">
+            <textarea name="message" placeholder="Message"></textarea>
+        </div>
+        <input type="submit" value="Submit" id="input-submit">
+    </form>
+</section>
+<footer id="footer">
+    <div class="container">
+        <div class="footer-top">
+            <h1 class="footer-logo">Loggo</h1>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-mid">
+            <ul class="footer-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Loggo. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+{% endblock  %}

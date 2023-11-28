@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock  %}
+{% load static %}
+{% block home %}
+<div class="full">
+    <div class="wrapper">
+        <i id= "left"class="fa-solid fa-angle-left"></i>
+        <div class="carousel">
+                {% for image in Hoteldetails.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ Hoteldetails.hotel_name }}" draggable="false" onclick="FullView(this.src)">
+            {% endfor %}
+            
+        </div>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+        
+</div>
+<section class="hotel-details">
+    <div class="hotel-info">
+        <h1 class="hotel-name">{{Hoteldetails.hotel_name}}</h1>
+        <p class="hotel-area">{{Hoteldetails.area}}</p>
+        <p class="beds-people">Beds: {{Hoteldetails.hotel_beds}} | Accommodates: {{Hoteldetails.hotel_accommodates}}</p>
+        <div class="star-rating">
+            <span class="gold-star">{{ Hoteldetails.generate_star_rating_html|safe }}</span>
+
+        </div>
+        <p class="hotel-description">
+            {{Hoteldetails.hotel_description}}
+        </p>
+        <div class="amenities">
+            <h2>Amenities</h2>
+            <ul>
+                {% for amenity in Hoteldetails.hotel_amenities.all %}
+                <li>{{ amenity.name }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="price">
+            <h2>Price per Night</h2>
+            <p>{{Hoteldetails.hotel_price}}</p>
+        </div>
+        <a href="https://api.whatsapp.com/send?phone=917448898989" class="book-button">Book Now <i class='bx bxl-whatsapp-square' style='color:#30bc2f'  ></i></a>
+        <div class="directions">
+        <a href="https://www.google.com/maps/dir/?api=1&origin=Current+Location&destination={{Hoteldetails.latitude}},{{Hoteldetails.longitude}}" class="directions-button">Get Directions 📍</a>
+
+    </div>
+    </div>
+        
+</section>
+<footer id="footerr">
+    <div class="container">
+        <div class="footer-top">
+            <h1 class="footer-logo">Loggo</h1>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-mid">
+            <ul class="footer-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Loggo. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="FullImageView">
+    <img id="FullImage" />
+    </div> 
+    <script type = "text/javascript">
+        function FullView(ImgLink) {
+            document.getElementById("FullImage").src = ImgLink;
+            document.getElementById("FullImageView").style.display = "block";
+        }
+    </script>
+{% endblock %}
