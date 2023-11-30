@@ -17,10 +17,10 @@
                 {% for a in Hoteldetails %}
                  <div class="box">
                      <div class="box-img">
-                  <a href=""><img src={{a.main_hotel_image.url}} alt="Hotel Image"></a>       
+                  <a href="{% url "details" a.pk%}"><img src={{a.main_hotel_image.url}} alt="Hotel Image"></a>       
                      </div>
                      <div class="box-info">
-                         <h2 class="hotel-name"><a href="">{{a.hotel_name}}</a></h2>
+                         <h2 class="hotel-name"><a href="{% url "details" a.pk%}">{{a.hotel_name}}</a></h2>
                          <p class="hotel-area">{{a.hotel_area}}</p>
                          <p class="beds-people">Beds: {{a.hotel_beds}} | Accommodates: {{a.hotel_accommodates}}</p>
                          <div class="star-rating">
@@ -71,16 +71,17 @@
         <div class="footer-top">
             <h1 class="footer-logo">Loggo</h1>
             <div class="social-media">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/stephen.angelo.581/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/stephennangelo/"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/StephenAng67731"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
         <div class="footer-mid">
             <ul class="footer-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{% url "home" %}#mainm">Properties</a></li>
+                <li> <a href="{% url "home" %}#about">About</a></li>
+                    <li><a href="{% url "home" %}#contact">Contact</a></li>
+                
             </ul>
         </div>
         <div class="footer-bottom">
