@@ -295,7 +295,7 @@ body{
   .ratings {
     margin-top: 10px;
     font-size: 14px; 
-    color: #777; /* Change the text color to a light gray */
+    color: #777; 
   }
   
   
@@ -684,14 +684,14 @@ body{
 .directions-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007BFF; /* Change the background color to your preference */
-  color: #fff; /* Text color */
+  background-color: #007BFF; 
+  color: #fff; 
   text-decoration: none;
   border-radius: 5px;
 }
 
 .directions-button:hover {
-  background-color: #0056b3; /* Change the hover background color to your preference */
+  background-color: #0056b3; 
 }
   
   
@@ -726,6 +726,9 @@ body{
        float: none;
        margin-bottom: 0; 
     }
+    #footerr{
+      top: 250%;
+      }
    }
    
   
@@ -862,6 +865,9 @@ font-size: 16px;
 .pricee {
   display: flex;
   font-size: 11px;
+}
+#footerr{
+top: 250%;
 }
 .readmore a {
   margin-left: 9%;
